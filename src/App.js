@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+
+import Landing from './components/Landing';
+import ScatterPlots from './containers/ScatterPlots';
+import DonutCharts from './containers/DonutCharts';
+import BarCharts from './containers/BarCharts';
+import Logo from './components/Logo';
+import NavBar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Link to="/"><Logo /></Link>
+        <NavBar>
+          <Link to="/scatter">Scatter Plots</Link>
+          <Link to="/donut">Pie Charts</Link>
+          <Link to="/bar">Bar Charts</Link>
+        </NavBar>
+        <Route exact path="/" component={Landing} />
+        <Route path="/bar" component={BarCharts} />
+        <Route path="/scatter" component={ScatterPlots} />
+        <Route path="/donut" component={DonutCharts} />
+      </Router>
     </div>
   );
 }
