@@ -1,33 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-import { VictoryPie, VictoryLabel } from 'victory';
+import { VictoryPie } from 'victory';
 
 import { StyledChartContainer } from '../styled-components';
 
 const startingPie = [
-    {x: "primary", y: 99, fill: "#47e8be", hoverFill: "#47e8be", eventKey: "primary"},
-    {x: "secondary", y: 1, fill: "#1cb38c", hoverFill: "#1cb38c", eventKey: "secondary"}
+    {x: "primary", y: 85, fill: "#47e8be", hoverFill: "#47e8be", eventKey: "primary"},
+    {x: "secondary", y: 15, fill: "#40c5a3", hoverFill: "#40c5a3", eventKey: "secondary"}
 ]
 
 const Donut1 = () => {
-    const [pieData, updatePie] = useState([]);
+    const [pieData, updatePie] = useState([
+        {
+            x: 'primary',
+            y: 0,
+            fill: '#40c5a3',
+            hoverFill: '#1cb38c',
+            eventKey: 'primary'
+        },
+        {
+            x: 'secondary',
+            y: 100,
+            fill: '#40c5a3',
+            hoverFill: '#1cb38c',
+            eventKey: 'secondary'
+        }
+    ]);
 
    useEffect(()=> {
         updatePie(startingPie);
     },[startingPie]);
 
     const innerRadius = (1 / 3) * 250;
-
-    // this part chart uses the label component as the central text
-    // victory generates a label component for each pie piece and in this case we only want the text to render once
-    // so this closure handles returning a string only once, regardless of # of pie pieces
-    const getLabelText = () => {
-        var count = 0;
-        return function() {
-            count++;
-            return count === 1 ? ['Love', 'for', 'Pie'] : null;
-        }
-	}
 
     return (
         <StyledChartContainer
@@ -45,28 +49,18 @@ const Donut1 = () => {
                     innerRadius={innerRadius}
                     style={{ data: { fill: (d) => d.fill } }}
                     padding={0}
-                    labelComponent={
-                        <VictoryLabel
-                            name="pielabel"
-                            data={pieData[0]}
-                            textAnchor="middle"
-                            verticalAnchor="middle"
-                            x={200 / 2}
-                            y={96}
-                            text={getLabelText()}
-                            width={200 - innerRadius}
-                            eventKey="primary"
-                            style={{
-                                width: '80%',
-                                fontSize: 20,
-                                fontWeight: 'normal',
-                                textTransform: 'uppercase',
-                                fill: '#9c9e9d'
-                            }}
-                        />
-                    }
+                    animate={{
+                        duration: 2000,
+                        onLoad: { duration: 2000 },
+                        easing: "backInOut"
+                    }}
                 />
             </svg>
+            <section>
+                <div>Love</div>
+                <div>For</div>
+                <div>Pie</div>
+            </section>
         </StyledChartContainer>
     );
 }
