@@ -5,8 +5,8 @@ import { VictoryPie } from 'victory';
 import { StyledChartContainer } from '../styled-components';
 
 const startingPie = [
-    {x: "primary", y: 85, fill: "#47e8be", hoverFill: "#47e8be", eventKey: "primary"},
-    {x: "secondary", y: 15, fill: "#40c5a3", hoverFill: "#40c5a3", eventKey: "secondary"}
+    {x: "primary", y: 85, fill: "#4798e8", hoverFill: "#4798e8", eventKey: "primary"},
+    {x: "secondary", y: 15, fill: "#47e7be", hoverFill: "#47e7be", eventKey: "secondary"}
 ]
 
 const Donut1 = () => {
@@ -14,14 +14,14 @@ const Donut1 = () => {
         {
             x: 'primary',
             y: 0,
-            fill: '#40c5a3',
+            fill: '#47e7be',
             hoverFill: '#1cb38c',
             eventKey: 'primary'
         },
         {
             x: 'secondary',
             y: 100,
-            fill: '#40c5a3',
+            fill: '#47e7be',
             hoverFill: '#1cb38c',
             eventKey: 'secondary'
         }
@@ -50,8 +50,8 @@ const Donut1 = () => {
                     style={{ data: { fill: (d) => d.fill } }}
                     padding={0}
                     animate={{
-                        duration: 2000,
-                        onLoad: { duration: 2000 },
+                        duration: 1500,
+                        onLoad: { duration: 1500 },
                         easing: "backInOut"
                     }}
                 />
