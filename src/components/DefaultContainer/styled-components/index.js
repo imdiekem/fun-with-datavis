@@ -8,5 +8,7 @@ export const StyledDefaultContainer = styled.div`
     margin: 40px 0 0 10%;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 80px 1fr 80px;
-    grid-template-areas: "head head head" "main main sidebar" "footer footer footer";
+    grid-template-areas: "head head head"
+                        "main main sidebar"
+                        "footer footer footer";
 `;
