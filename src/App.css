@@ -3,6 +3,10 @@ html {
   font-size: 10px;
 }
 
+body {
+  background: #f3fdf5;
+}
+
 .App {
   font-family: 'Nunito', sans-serif;
   color: #5c4949;
@@ -10,6 +14,10 @@ html {
 
 p {
   padding: 0;
+  margin: 0 0 20px 0;
+}
+
+p:last-of-type {
   margin: 0;
 }
 
